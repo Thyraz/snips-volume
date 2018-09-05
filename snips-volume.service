@@ -1,0 +1,12 @@
+# /etc/systemd/system/snips-volume.service
+[Unit]
+Description=snips-volume
+After=network.target
+
+[Service]
+ExecStart=/opt/snips-volume/snips-volume.py
+Restart=always
+StartLimitInterval=0
+
+[Install]
+WantedBy=multi-user.target
