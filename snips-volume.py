@@ -24,17 +24,16 @@ def get_volume():
     mixer = alsaaudio.Mixer()
     volume = mixer.getvolume()
     # Extract integer value from List of longs
-    volume = int(vol[0])
+    volume = int(volume[0])
 
     return volume
 
 
 # Set volume to alsa
 def set_volume(volume):
+    volume = int(volume)
     mixer = alsaaudio.Mixer()
-    volume = mixer.getvolume()
-    # Extract integer value from List of longs
-    volume = int(vol[0])
+    mixer.setvolume(volume)
 
 
 # Received set message from MQTT
