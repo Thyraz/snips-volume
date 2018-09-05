@@ -37,9 +37,9 @@ JSON Payload:
 #### hermes/getvolume
 JSON Payload: 
 
-| Key     | Value                                    |
-| ------- | ---------------------------------------- |
-| siteId  | Site where the volume should be changed  |
+| Key     | Value                                                   |
+| ------- | ------------------------------------------------------- |
+| siteId  | Site where you want to request the current volume level |
 
 ### Out Messages
 
