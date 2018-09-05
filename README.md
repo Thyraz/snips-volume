@@ -2,8 +2,11 @@
 ## About
 This script is an addon for https://snips.ai
 
-Snips currently doesn't allow you to change the audio volume of the TTS engine.\
+Snips currently doesn't allow you to change the audio volume of the TTS engine.
+
 This script tries to solve that by listening on the MQTT topics `hermes/setvolume` and `hermes/getvolume`.\
+Volume is changed through Alsa.
+
 If a get request is detected, the script will reply on `hermes/volume` with the current volume.\
 Usage in an environment with multiple satellites is supported through the siteId.
 
