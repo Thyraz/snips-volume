@@ -15,8 +15,8 @@ import alsaaudio
 # Subscribe topics
 def on_connect(client, userdata, flags, rc):
     print("MQTT connected")
-    client.subscribe("hermes/setvolume")
-    client.subscribe("hermes/getvolume")
+    client.subscribe("hermes/sound/setvolume")
+    client.subscribe("hermes/sound/getvolume")
 
 
 # Get volume from alsa
@@ -62,7 +62,7 @@ def on_get(client, userdata, msg):
         # Send answer to mqtt
         msgs = [
             {
-                "topic": "hermes/volume",
+                "topic": "hermes/sound/volume",
                 "payload": json.dumps({"volume": volume, "siteId": site_id}),
             },
         ]
@@ -72,8 +72,8 @@ def on_get(client, userdata, msg):
 # Create client and callback
 client = mqtt.Client()
 client.on_connect = on_connect
-client.message_callback_add("hermes/setvolume", on_set)
-client.message_callback_add("hermes/getvolume", on_get)
+client.message_callback_add("hermes/sound/setvolume", on_set)
+client.message_callback_add("hermes/sound/getvolume", on_get)
 
 # Read MQTT connection info from the central snips config.
 snips_config = toml.loads(open("/etc/snips.toml").read())
