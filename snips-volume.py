@@ -21,7 +21,12 @@ def on_connect(client, userdata, flags, rc):
 
 # Get volume from alsa
 def get_volume():
-    mixer = alsaaudio.Mixer()
+    try:
+        mixer = alsaaudio.Mixer()
+    except Exception:
+        mixer = alsaaudio.Mixer('PCM')
+        pass
+
     volume = mixer.getvolume()
     # Extract integer value from List of longs
     volume = int(volume[0])
@@ -32,7 +37,13 @@ def get_volume():
 # Set volume to alsa
 def set_volume(volume):
     volume = int(volume)
-    mixer = alsaaudio.Mixer()
+
+    try:
+        mixer = alsaaudio.Mixer()
+    except Exception:
+        mixer = alsaaudio.Mixer('PCM')
+        pass
+
     mixer.setvolume(volume)
 
 
