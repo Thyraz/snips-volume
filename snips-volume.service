@@ -2,10 +2,12 @@
 [Unit]
 Description=snips-volume
 After=network.target
+StartLimitIntervalSec=0
 
 [Service]
 ExecStart=/opt/snips-volume/snips-volume.py
 Restart=always
+RestartSec=5s
 StartLimitInterval=0
 
 [Install]
